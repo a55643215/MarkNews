@@ -1,0 +1,9 @@
+line-bot-sdk
+bs4
+flask
+requests
+twder
+twstock
+pymongo
+datetime
+gunicorn
