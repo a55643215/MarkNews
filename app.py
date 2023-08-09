@@ -104,6 +104,9 @@ def handle_message(event):
                 event.reply_token,
                 TextSendMessage(text=content)
             )
+    if event.message.text == '想知道匯率':
+        message = show_Button()
+        line_bot_api.reply_message(event.reply_token,message)        
 
 @handler.add(FollowEvent)
 def handle_follow(event):
