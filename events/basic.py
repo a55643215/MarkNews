@@ -37,7 +37,7 @@ Hello! 您好，歡迎您成為 Master Finance 的好友！
             actions=[
                 MessageTemplateAction(
                     label='油價查詢',
-                    text='油價查詢'
+                    text='想知道油價'
                 ),
                 MessageTemplateAction(
                     label='匯率查詢',
