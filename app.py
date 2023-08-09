@@ -38,7 +38,7 @@ def handle_message(event):
     msg = str(event.message.text).upper().strip() # 使用者輸入的內容
     emsg =  event.message.text
     user_name = profile.display_name #使用者名稱
-    
+
     ######################## 使用說明 選單 油價查詢################################
     if message_text == '@使用說明':
         about_us_event(event)
@@ -65,10 +65,10 @@ def handle_message(event):
         stockNumber = msg[2:6]
         content = write_my_stock(uid,user_name,stockNumber,msg[6:7],msg[7:])
         line_bot_api.push_message(uid,TextSendMessage(content))
-    else:
-        content = write_my_stock(uid,user_name, stockNumber,"未設定","未設定")
-        line_bot_api.push_message(uid,TextSendMessage(content))
-        return 0 
+    # else:
+    #     content = write_my_stock(uid,user_name, stockNumber,"未設定","未設定")
+    #     line_bot_api.push_message(uid,TextSendMessage(content))
+    #     return 0 
     
     if(msg.startswith('#')):
             text = msg[1:]
