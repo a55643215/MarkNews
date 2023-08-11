@@ -45,12 +45,15 @@ def handle_message(event):
         about_us_event(event)
         Usage(event)
 
-    
     if event.message.text == "想知道油價":
         content = oil_price()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
+    ######################## 使用說明 選單 油價查詢################################
+
+#----------------------------------------------------------------------------------------------
+
     ################################ 股票區 ######################################
     if event.message.text == "股價查詢":
         line_bot_api.push_message(uid,TextSendMessage("請輸入#加股票代號....."))
@@ -68,11 +71,6 @@ def handle_message(event):
         content = write_my_stock(uid,user_name,stockNumber,msg[6:7],msg[7:])
         line_bot_api.push_message(uid,TextSendMessage(content))
         return 0 
-    # else:
-    #     content = write_my_stock(uid,user_name, stockNumber,"未設定","未設定")
-    #     line_bot_api.push_message(uid,TextSendMessage(content))
-    #     return 0 
-    
     if(msg.startswith('#')):
             text = msg[1:]
             content = ''
@@ -106,9 +104,18 @@ def handle_message(event):
                 TextSendMessage(text=content)
             )
     ################################ 股票區 ######################################
+
+#----------------------------------------------------------------------------------------------
+
+    ################################ 換匯區 ######################################
     if re.match('幣別種類',emsg):   
         message = show_Button()
         line_bot_api.reply_message(event.reply_token,message)        
+        
+    if re.match('查詢匯率[A-Z]{3}',msg):
+        msg = msg[4:]
+        content = showCurrency(msg)
+        line_bot_api.push_message(uid, TextSendMessage(content))
 
     if re.match("換匯[A-Z]{3}/[A-Z{3}]",msg):
         line_bot_api.push_message(uid,TextSendMessage("將為您做外匯計算...."))
